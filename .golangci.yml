@@ -1,0 +1,27 @@
+run:
+  tests: true
+  build-tags:
+    - golangci
+  allow-parallel-runners: true
+
+output:
+  sort-results: true
+
+linters:
+  enable-all: true
+  disable:
+  # Disable deprecated/abandoned linters
+  - structcheck
+  - scopelint
+  - ifshort
+  - interfacer
+  - maligned
+  - exhaustivestruct
+  - nosnakecase
+  - varcheck
+  - deadcode
+  - golint
+  # Allow global variables
+  - gochecknoglobals
+  # Disable due to use of external linters
+  - depguard

@@ -1,0 +1,26 @@
+name: Docker Test
+on:
+    workflow_dispatch:
+    push:
+      branches:
+        - main
+    pull_request:
+
+jobs:
+  docker-test:
+    name: Run tests on latest Go version
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - run: |
+          docker pull golang:alpine
+          docker compose -f ./.github/docker-compose-test.yml up --build -d
+
+      - run: |
+          curl -sS http://localhost:8080/ | grep Hello\ from\ host
+
+      - run: |
+          docker compose -f ./.github/docker-compose-test.yml down --remove-orphans
+          docker system prune -af

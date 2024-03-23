@@ -1,0 +1,19 @@
+name: Docker Compose Test
+on:
+    workflow_dispatch:
+    push:
+      branches:
+        - main
+    pull_request:
+
+jobs:
+  docker-test:
+    name: Test docker compose scaling
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - run: |
+          cd _example
+          ./up.sh 10

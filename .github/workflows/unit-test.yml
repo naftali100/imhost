@@ -1,0 +1,22 @@
+name: Unit Tests
+on:
+    workflow_dispatch:
+    push:
+      branches:
+        - main
+    pull_request:
+
+jobs:
+  go-test:
+    name: Run tests on latest Go version
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - uses: actions/setup-go@v5
+        with:
+          go-version: 'stable'
+
+      # Unit tests
+      - run: go test ./...

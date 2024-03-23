@@ -1,0 +1,25 @@
+version: '3'
+
+services:
+  imhost:
+    build:
+      context: https://github.com/KEINOS/imhost.git
+    expose:
+      - "80"
+    restart: unless-stopped
+
+  loadbalancer:
+    image: nginx:latest
+    volumes:
+      - ./nginx/proxy.conf:/etc/nginx/nginx.conf:ro
+    ports:
+      - "8080:80"
+    depends_on:
+      - imhost
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "service", "nginx", "status"]
+      start_period: 15s
+      interval: 5m
+      timeout: 15s
+      retries: 3
