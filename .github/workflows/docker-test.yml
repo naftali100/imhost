@@ -8,19 +8,22 @@ on:
 
 jobs:
   docker-test:
-    name: Run tests on latest Go version
+    name: Run imhost on Docker
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
 
-      - run: |
+      - name: Set up Docker
+        run: |
           docker pull golang:alpine
           docker compose -f ./.github/docker-compose-test.yml up --build -d
 
-      - run: |
+      - name: Test request
+        run: |
           curl -sS http://localhost:8080/ | grep Hello\ from\ host
 
-      - run: |
+      - name: Tear down Docker
+        run: |
           docker compose -f ./.github/docker-compose-test.yml down --remove-orphans
           docker system prune -af

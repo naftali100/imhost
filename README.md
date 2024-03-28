@@ -74,3 +74,5 @@ services:
 [![Unit Tests](https://github.com/KEINOS/imhost/actions/workflows/unit-test.yml/badge.svg)](https://github.com/KEINOS/imhost/actions/workflows/unit-test.yml)
 [![GolangCI-Lint Test](https://github.com/KEINOS/imhost/actions/workflows/golang-ci.yml/badge.svg)](https://github.com/KEINOS/imhost/actions/workflows/golang-ci.yml)
 [![Docker Tests](https://github.com/KEINOS/imhost/actions/workflows/docker-test.yml/badge.svg)](https://github.com/KEINOS/imhost/actions/workflows/docker-test.yml)
+[![CodeQL](https://github.com/KEINOS/imhost/actions/workflows/github-code-scanning/codeql/badge.svg)](https://github.com/KEINOS/imhost/actions/workflows/github-code-scanning/codeql)
+[![codecov](https://codecov.io/gh/KEINOS/imhost/graph/badge.svg?token=7WsjthYoE6)](https://codecov.io/gh/KEINOS/imhost)

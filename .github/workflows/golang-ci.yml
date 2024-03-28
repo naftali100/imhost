@@ -14,11 +14,12 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v4
 
-      - uses: actions/setup-go@v5
+      - name: Set up Go
+        uses: actions/setup-go@v5
         with:
           go-version: 'stable'
 
-      # Linting and static analysis
-      - uses: golangci/golangci-lint-action@v4
+      - name: Run golangci-lint
+        uses: golangci/golangci-lint-action@v4
         with:
           version: latest
