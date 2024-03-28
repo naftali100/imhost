@@ -1,10 +1,12 @@
 # ImHost
 
-**[ImHost](./imhost) is a web server written in Go that simply responds the "host name" of the server.**
+[ImHost](./imhost) is a **web server that simply responds the "host name" of the server**.
 
-Once running, it listens to the port 80 by default. When accessed via HTTP, it returns the host name of the server.
+The [Dockerfile](./Dockerfile) runs the server and listens to the port 80. When accessed via HTTP, it returns the host name of the server.
 
-The [Dockerfile](./Dockerfile) aims to be used for testing and debugging purposes in a Docker orchestration environment. Such as docker-compose, docker-swarm, kubernetes, etc.
+Its main purpose is to be used for testing and debugging purposes in a Docker orchestration environment. Such as docker-compose, docker-swarm, kubernetes, etc.
+
+See the "[Docker Compose with scale and round-robin](#docker-compose-with-scale-and-round-robin)" section for the **full example using "--scale" option and Nginx as a load balancer**.
 
 ## Usage
 
@@ -26,15 +28,19 @@ Hello from host: f9536b7afae0
 
 ### Docker Compose with scale and round-robin
 
-Here is an example of `docker-compose.yml` that uses `imhost` with `--scale` support and `nginx` as a load balancer.
+Here is an example of `docker-compose.yml` that can:
+
+1. Scale-up `imhost` containers using `--scale` option.
+2. Load balancing using `nginx`.
 
 ```shellsession
 $ # Run the containers and scale the imhost to 5 instances
-docker compose up --detach --scale imhost=5
+docker compose up --scale imhost=5 --detach
 **snip**
 
-$ # Check the host names
-$ # (note the host names are different each time)
+$ # Check the host names.
+$ # Note that the host names are different each time because of
+$ # the round-robin.
 $ curl -sS http://localhost:8080
 Hello from host: 2c80ea38d91a
 
