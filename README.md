@@ -24,7 +24,7 @@ $ curl -sS http://localhost:8080/
 Hello from host: f9536b7afae0
 ```
 
-### docker-compose with scale and round-robin
+### Docker Compose with scale and round-robin
 
 Here is an example of `docker-compose.yml` that uses `imhost` with `--scale` support and `nginx` as a load balancer.
 
@@ -59,12 +59,31 @@ services:
   loadbalancer:
     image: nginx:latest
     volumes:
-      - ./nginx/proxy.conf:/etc/nginx/nginx.conf:ro
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
     ports:
       - "8080:80"
     depends_on:
       - imhost
     restart: unless-stopped
+```
+
+```nginx
+user nginx;
+
+worker_processes auto;
+
+events {
+    worker_connections 1024;
+}
+
+http {
+    server {
+        listen 80;
+        location / {
+            proxy_pass http://imhost:80/;
+        }
+    }
+}
 ```
 
 - For the full example, see the [example](./_example) directory.
