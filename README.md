@@ -1,12 +1,10 @@
 # ImHost
 
-[ImHost](./imhost) is a **web server that simply responds the "host name" of the server**.
+[ImHost](./imhost) is a **web server that simply responds the "host name" of the server** at port 80.
 
-Once the server is running, it listens to the port 80 and when accessed via HTTP, it returns the host name of the server.
+Its main purpose is for testing and demonstration of **load balancing** and **scaling** of Docker containers.
 
-Its main purpose is to be used for testing and debugging purposes in a Docker orchestration environment. Such as docker-compose, docker-swarm, kubernetes, etc.
-
-We provide a [Dockerfile](./Dockerfile) for convenience. See the "[Docker Compose with scale and round-robin](#docker-compose-with-scale-and-round-robin)" section for the **full example using "--scale" option and Nginx as a load balancer** as well.
+> We provide a [Dockerfile](./Dockerfile) for convenience. See the "[Docker Compose with scale and round-robin](#docker-compose-with-scale-and-round-robin)" section for the **full example using "--scale" option and Nginx as a load balancer** as well.
 
 ## Usage
 
@@ -96,6 +94,10 @@ http {
 
 ## Source code
 
+![GitHub go.mod Go version](https://img.shields.io/github/go-mod/go-version/KEINOS/imhost)
+[![Go Reference](https://pkg.go.dev/badge/github.com/KEINOS/imhost.svg)](https://pkg.go.dev/github.com/KEINOS/imhost)
+![GitHub License](https://img.shields.io/github/license/KEINOS/imhost)
+
 - [/imhost/main.go](./imhost/main.go)
 
 ### Status
@@ -104,4 +106,6 @@ http {
 [![GolangCI-Lint Test](https://github.com/KEINOS/imhost/actions/workflows/golang-ci.yml/badge.svg)](https://github.com/KEINOS/imhost/actions/workflows/golang-ci.yml)
 [![Docker Tests](https://github.com/KEINOS/imhost/actions/workflows/docker-test.yml/badge.svg)](https://github.com/KEINOS/imhost/actions/workflows/docker-test.yml)
 [![CodeQL](https://github.com/KEINOS/imhost/actions/workflows/github-code-scanning/codeql/badge.svg)](https://github.com/KEINOS/imhost/actions/workflows/github-code-scanning/codeql)
+
 [![codecov](https://codecov.io/gh/KEINOS/imhost/graph/badge.svg?token=7WsjthYoE6)](https://codecov.io/gh/KEINOS/imhost)
+[![Go Report Card](https://goreportcard.com/badge/github.com/KEINOS/imhost)](https://goreportcard.com/report/github.com/KEINOS/imhost)
