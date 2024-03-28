@@ -1,4 +1,4 @@
-module github.com/KEINOS/iamhost
+module github.com/KEINOS/imhost
 
 go 1.22.1
 

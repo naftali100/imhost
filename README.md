@@ -2,11 +2,11 @@
 
 [ImHost](./imhost) is a **web server that simply responds the "host name" of the server**.
 
-The [Dockerfile](./Dockerfile) runs the server and listens to the port 80. When accessed via HTTP, it returns the host name of the server.
+Once the server is running, it listens to the port 80 and when accessed via HTTP, it returns the host name of the server.
 
 Its main purpose is to be used for testing and debugging purposes in a Docker orchestration environment. Such as docker-compose, docker-swarm, kubernetes, etc.
 
-See the "[Docker Compose with scale and round-robin](#docker-compose-with-scale-and-round-robin)" section for the **full example using "--scale" option and Nginx as a load balancer**.
+We provide a [Dockerfile](./Dockerfile) for convenience. See the "[Docker Compose with scale and round-robin](#docker-compose-with-scale-and-round-robin)" section for the **full example using "--scale" option and Nginx as a load balancer** as well.
 
 ## Usage
 
@@ -94,7 +94,11 @@ http {
 
 - For the full example, see the [example](./_example) directory.
 
-## Status
+## Source code
+
+- [/imhost/main.go](./imhost/main.go)
+
+### Status
 
 [![Unit Tests](https://github.com/KEINOS/imhost/actions/workflows/unit-test.yml/badge.svg)](https://github.com/KEINOS/imhost/actions/workflows/unit-test.yml)
 [![GolangCI-Lint Test](https://github.com/KEINOS/imhost/actions/workflows/golang-ci.yml/badge.svg)](https://github.com/KEINOS/imhost/actions/workflows/golang-ci.yml)
