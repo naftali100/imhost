@@ -63,6 +63,8 @@ func (h *defaultHandler) ServeHTTP(respWriter http.ResponseWriter, _ *http.Reque
 
 	status := http.StatusOK
 
+	fmt.Println("Got request ...")
+
 	hostname, err := osHostname()
 	if err != nil {
 		respMsg = fmt.Sprintf("failed to get hostname. error: %s", err)
